@@ -1,11 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
-import { useContext } from 'react'
 import toast from 'react-hot-toast'
-import { AuthContext } from '../../provirders/AuthProvirder';
+import useAuth from '../../hooks/useAuth'
 const Login = () => {
   const navigate = useNavigate()
-  const { signIn, signInWithGoogle } = useContext(AuthContext)
+  const { signIn, signInWithGoogle } = useAuth();
 
   // Google Signin
   const handleGoogleSignIn = async () => {

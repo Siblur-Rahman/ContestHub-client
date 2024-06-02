@@ -1,12 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
-// import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
-import { AuthContext } from '../../provirders/AuthProvirder'
+import useAuth from '../../hooks/useAuth'
 const Register = () => {
   const navigate = useNavigate()
-  const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =
-    useContext(AuthContext)
+  const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =useAuth();
 
   const handleSignUp = async e => {
     e.preventDefault()
