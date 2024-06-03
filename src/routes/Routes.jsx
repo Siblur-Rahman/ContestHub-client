@@ -7,11 +7,14 @@ import AddContest from "../pages/AddContest";
 import MyAddedContests from "../pages/MyAddedContests";
 import PrivateRoute from './PrivateRoute';
 import UpdateContest from "../pages/UpdateContest";
+import ErrorPage from "../pages/ErrorPage";
+import DetailsContest from "../pages/DetailsContest";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage/>,
       children: [
         {
           index: true,
@@ -36,6 +39,16 @@ const router = createBrowserRouter([
           element: (
             <PrivateRoute>
               <UpdateContest />
+            </PrivateRoute>
+          ),
+          loader: ({ params }) =>
+            fetch(`${import.meta.env.VITE_API_URL}/contest/${params.id}`),
+        },
+        {
+          path: '/detailsContest/:id',
+          element: (
+            <PrivateRoute>
+              <DetailsContest />
             </PrivateRoute>
           ),
           loader: ({ params }) =>

@@ -152,6 +152,12 @@ const MyAddedContests = () => {
                           >
                             Edit
                           </Link>
+                          <Link
+                            to={`/detailsContest/${contest._id}`}
+                            className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
+                          >
+                            details
+                          </Link>
                         </div>
                       </td>
                     </tr>
