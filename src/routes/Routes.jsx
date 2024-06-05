@@ -4,11 +4,13 @@ import Home from "../pages/Home";
 import Register from '../pages/Authentication/Register';
 import Login from "../pages/Authentication/Login";
 import AddContest from "../pages/AddContest";
-import MyAddedContests from "../pages/MyAddedContests";
 import PrivateRoute from './PrivateRoute';
 import UpdateContest from "../pages/UpdateContest";
 import ErrorPage from "../pages/ErrorPage";
 import DetailsContest from "../pages/DetailsContest";
+import AllContests from "../pages/AllContests";
+import UserDashboard from "../layout/UserDashboard";
+import MyProfile from "../pages/Dashboard/UserDashboard/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
           path:"login",
           element: <Login />,
           loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/contests`),
+        },
+        {
+          path:"/allcontests",
+          element:<AllContests/>
         },
         {
           path:"/addcontest",
@@ -53,12 +59,18 @@ const router = createBrowserRouter([
           ),
           loader: ({ params }) =>
             fetch(`${import.meta.env.VITE_API_URL}/contest/${params.id}`),
-        },
-        {
-          path:"/myaddedcontests",
-          element:<MyAddedContests/>
         }
       ]
     },
+    {
+      path:'userdashboard',
+      element:<UserDashboard></UserDashboard>,
+      children:[
+        {
+          path:"myprofile",
+          element:<MyProfile/>
+        }
+      ]
+    }
   ]);
 export default router

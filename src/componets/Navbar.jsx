@@ -14,16 +14,16 @@ const Navbar = () => {
 
     const navLink =<>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/allcontests">All Contests</NavLink></li>
         
         {!user && <>
             <li><NavLink to="/register">Register</NavLink></li>
             <li><NavLink to="/login">Login</NavLink></li>
         </>}
-        {user && <>
+        {/* {user && <>
             <li><NavLink to="/addcontest">Add Contest</NavLink></li>
-            <li><NavLink to="/myaddedcontests">My Add Contest</NavLink></li>
-            {/* <li><NavLink to="/login">Login</NavLink></li> */}
-        </>}
+            <li><NavLink to="/my-created-contest">My Add Contest</NavLink></li>
+        </>} */}
         </>
 return (
 
@@ -61,7 +61,7 @@ return (
                            }
                         </a>
                         </li>
-                        <li><Link to="/dashbord" className="btn btn-sm">Dashbord</Link></li>
+                        <li><Link to="/userdashboard" className="btn btn-sm">User Dashbord</Link></li>
                         <li><a onClick={handleLogOut} className="btn btn-sm">Sign out</a></li>
                     </ul>
                     </>

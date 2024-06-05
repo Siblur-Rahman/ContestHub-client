@@ -47,7 +47,7 @@ const AddContest = () => {
       )
       console.log(data)
       toast.success('Contest added Successfully!')
-      navigate('/myaddedcontests')
+      navigate('/my-created-contest')
     } catch (err) {
       console.log(err)
     }
@@ -107,12 +107,12 @@ const AddContest = () => {
                 className='border p-2 rounded-md'
               >
                 <option value='Image Design'>Image Design</option>
-                <option value='Article Writing,'>Article Writing,</option>
-                <option value='Marketing Strategy,'>Marketing Strategy,</option>
-                <option value='Digital'>advertisement</option>
-                <option value='Gaming Review'>Gaming Review</option>
+                <option value='Article Writing'>Article Writing</option>
+                <option value='Marketing Strategy'>Marketing Strategy</option>
+                {/* <option value='Digital'>advertisement</option> */}
+                {/* <option value='Gaming Review'>Gaming Review</option>
                 <option value='Book Review,'>Business Idea</option>
-                <option value='Movie Review'>Movie Review</option>
+                <option value='Movie Review'>Movie Review</option> */}
               </select>
             </div>
             <div>

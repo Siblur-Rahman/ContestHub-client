@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react'
 
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import useAxiosSecure from '../hooks/useAxiosSecure'
-import useAuth from '../hooks/useAuth'
+import useAuth from '../../../hooks/useAuth';
 
-const MyAddedContests = () => {
+const MyCreatedContest = () => {
   const axiosSecure = useAxiosSecure()
   const { user } = useAuth()
   const [contests, setContests] = useState([])
@@ -172,4 +171,4 @@ const MyAddedContests = () => {
   )
 }
 
-export default MyAddedContests;
+export default MyCreatedContest;
