@@ -61,7 +61,7 @@ return (
                            }
                         </a>
                         </li>
-                        <li><Link to="/userdashboard" className="btn btn-sm">User Dashbord</Link></li>
+                        <li><Link to="/dashboard" className="btn btn-sm">Dashbord</Link></li>
                         <li><a onClick={handleLogOut} className="btn btn-sm">Sign out</a></li>
                     </ul>
                     </>

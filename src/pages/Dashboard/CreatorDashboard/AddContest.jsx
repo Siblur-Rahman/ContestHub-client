@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from 'axios'
-import useAuth from '../hooks/useAuth'
+import useAuth from '../../../hooks/useAuth'
 
 const AddContest = () => {
   const { user } = useAuth()
@@ -45,7 +45,6 @@ const AddContest = () => {
         `${import.meta.env.VITE_API_URL}/contest`,
         contestData
       )
-      console.log(data)
       toast.success('Contest added Successfully!')
       navigate('/my-created-contest')
     } catch (err) {

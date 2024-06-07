@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import useAuth from '../hooks/useAuth'
+import useAuth from '../../../hooks/useAuth'
 
 const UpdateContest = () => {
   const navigate = useNavigate()
@@ -56,7 +56,7 @@ const UpdateContest = () => {
       )
       console.log(data)
       toast.success('Contest added Successfully!')
-      navigate('/my-created-contest')
+      navigate('/dashboard/mycreatedcontest')
     } catch (err) {
       console.log(err)
     }

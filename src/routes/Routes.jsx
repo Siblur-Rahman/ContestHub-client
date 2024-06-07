@@ -3,14 +3,19 @@ import Main from "../layout/Main";
 import Home from "../pages/Home";
 import Register from '../pages/Authentication/Register';
 import Login from "../pages/Authentication/Login";
-import AddContest from "../pages/AddContest";
+import AddContest from "../pages/Dashboard/CreatorDashboard/AddContest";
 import PrivateRoute from './PrivateRoute';
-import UpdateContest from "../pages/UpdateContest";
 import ErrorPage from "../pages/ErrorPage";
 import DetailsContest from "../pages/DetailsContest";
 import AllContests from "../pages/AllContests";
-import UserDashboard from "../layout/UserDashboard";
+import Dashboard from "../layout/Dashboard";
 import MyProfile from "../pages/Dashboard/UserDashboard/MyProfile";
+import MyParticipatedContest from "../pages/Dashboard/UserDashboard/MyParticipatedContest";
+import MyWinningContest from "../pages/Dashboard/UserDashboard/MyWinningContest";
+import ManageUser from "../pages/Dashboard/AdminDashboard/ManageUser";
+import ManageContests from "../pages/Dashboard/AdminDashboard/ManageContests";
+import MyCreatedContest from "../pages/Dashboard/CreatorDashboard/MyCreatedContest";
+import UpdateContest from "../pages/Dashboard/CreatorDashboard/UpdateContest";
 
 const router = createBrowserRouter([
     {
@@ -37,20 +42,6 @@ const router = createBrowserRouter([
           element:<AllContests/>
         },
         {
-          path:"/addcontest",
-          element:<AddContest/>
-        },
-        {
-          path: '/update/:id',
-          element: (
-            <PrivateRoute>
-              <UpdateContest />
-            </PrivateRoute>
-          ),
-          loader: ({ params }) =>
-            fetch(`${import.meta.env.VITE_API_URL}/contest/${params.id}`),
-        },
-        {
           path: '/detailsContest/:id',
           element: (
             <PrivateRoute>
@@ -63,13 +54,50 @@ const router = createBrowserRouter([
       ]
     },
     {
-      path:'userdashboard',
-      element:<UserDashboard></UserDashboard>,
+      path:'dashboard',
+      element:<Dashboard></Dashboard>,
       children:[
+        //admi Routes
+        {
+          path:"manageuser",
+          element:<ManageUser/>
+        },
+        {
+          path:"managecontests",
+          element:<ManageContests/>
+        },
+        //user Routes
         {
           path:"myprofile",
           element:<MyProfile/>
-        }
+        },
+        {
+          path:"myparticipatedcontest",
+          element:<MyParticipatedContest/>
+        },
+        {
+          path:"mywinningcontest",
+          element:<MyWinningContest/>
+        },
+        // Creator Routes
+        {
+          path:'mycreatedcontest',
+          element:<MyCreatedContest/>
+        },
+        {
+          path:"addcontest",
+          element:<AddContest/>
+        },
+        {
+          path: 'update/:id',
+          element: (
+            <PrivateRoute>
+              <UpdateContest />
+            </PrivateRoute>
+          ),
+          loader: ({ params }) =>
+            fetch(`${import.meta.env.VITE_API_URL}/contest/${params.id}`),
+        },
       ]
     }
   ]);

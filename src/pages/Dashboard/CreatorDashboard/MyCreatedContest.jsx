@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { FaTrash } from 'react-icons/fa';
 
 const MyCreatedContest = () => {
   const axiosSecure = useAxiosSecure()
@@ -142,11 +144,11 @@ const MyCreatedContest = () => {
                             onClick={() => handleDelete(contest._id)}
                             className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
                           >
-                           Delete
+                           <FaTrash></FaTrash>
                           </button>
 
                           <Link
-                            to={`/update/${contest._id}`}
+                            to={`/dashboard/update/${contest._id}`}
                             className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
                           >
                             Edit

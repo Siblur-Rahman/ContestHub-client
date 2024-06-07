@@ -2,21 +2,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import toast from 'react-hot-toast'
 import useAuth from '../../hooks/useAuth'
+import SocialLogin from '../../componets/SocialLogin'
 const Login = () => {
   const navigate = useNavigate()
-  const { signIn, signInWithGoogle } = useAuth();
+  const { signIn} = useAuth();
 
-  // Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle()
-      toast.success('Login Successful')
-      navigate('/')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
-    }
-  }
+  // // Google Signin
+  // const handleGoogleSignIn = async () => {
+  //   try {
+  //     await signInWithGoogle()
+  //     toast.success('Login Successful')
+  //     navigate('/')
+  //   } catch (err) {
+  //     console.log(err)
+  //     toast.error(err?.message)
+  //   }
+  // }
 
   // Email Password Signin
   const handleSignIn = async e => {
@@ -42,7 +43,8 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h2 className='text-center'>Login Now!</h2>
-          <div
+            <SocialLogin/>
+          {/* <div
             onClick={handleGoogleSignIn}
             className='flex cursor-pointer items-center justify-center transform border rounded-lg   hover:bg-gray-50 '
           >
@@ -50,7 +52,7 @@ const Login = () => {
             <span className='w-5/6 px-4 py-3 font-bold text-center'>
             Login with Google
             </span>
-          </div>
+          </div> */}
 
             <form className="card-body" onSubmit={handleSignIn}>
               <div className="form-control">

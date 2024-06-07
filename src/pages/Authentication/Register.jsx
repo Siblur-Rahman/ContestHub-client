@@ -1,9 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import useAuth from '../../hooks/useAuth'
+// import axios from 'axios'
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import SocialLogin from '../../componets/SocialLogin';
 const Register = () => {
+  const AxiosPublic = useAxiosPublic();
   const navigate = useNavigate()
-  const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =useAuth();
+  const {createUser, updateUserProfile, user, setUser } =useAuth();
 
   const handleSignUp = async e => {
     e.preventDefault()
@@ -13,12 +17,18 @@ const Register = () => {
     const photo = form.photo.value
     const pass = form.password.value
     console.log({ email, pass, name, photo })
+    const userInfo ={
+      name:name,
+      email:email
+    }
     try {
       // User Register
       const result = await createUser(email, pass)
       console.log(result)
       await updateUserProfile(name, photo)
       setUser({ ...user, photoURL: photo, displayName: name })
+      //create user entry in the database
+      AxiosPublic.post('/users', userInfo)
       navigate('/')
       toast.success('Register Successful')
     } catch (err) {
@@ -28,16 +38,16 @@ const Register = () => {
   }
 
   // Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle()
-      toast.success('Register Successful')
-      navigate('/')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
-    }
-  }
+  // const handleGoogleSignIn = async () => {
+  //   try {
+  //     await signInWithGoogle()
+  //     toast.success('Register Successful')
+  //     navigate('/')
+  //   } catch (err) {
+  //     console.log(err)
+  //     toast.error(err?.message)
+  //   }
+  // }
 
   return (
     <div className='min-h-[calc(100vh-306px)] my-12'>
@@ -48,7 +58,7 @@ const Register = () => {
             Register Now!
           </p>
 
-          <div
+          {/* <div
             onClick={handleGoogleSignIn}
             className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
           >
@@ -59,7 +69,8 @@ const Register = () => {
             <span className='w-5/6 px-4 py-3 font-bold text-center'>
               Login with Google
             </span>
-          </div>
+          </div> */}
+          <SocialLogin/>
 
           <div className='flex items-center justify-between mt-4'>
             <span className='w-1/5 border-b  lg:w-1/4'></span>
