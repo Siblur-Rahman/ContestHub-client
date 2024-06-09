@@ -1,9 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
        // TODO: get isAdmin value from the database
     //    const [isAdmin] = useAdmin();
-       const isAdmin = true;
+       const isAdmin = useAdmin();
        const isCreator = true;
        const isUser = true;
     return (

@@ -7,17 +7,7 @@ const Login = () => {
   const navigate = useNavigate()
   const { signIn} = useAuth();
 
-  // // Google Signin
-  // const handleGoogleSignIn = async () => {
-  //   try {
-  //     await signInWithGoogle()
-  //     toast.success('Login Successful')
-  //     navigate('/')
-  //   } catch (err) {
-  //     console.log(err)
-  //     toast.error(err?.message)
-  //   }
-  // }
+
 
   // Email Password Signin
   const handleSignIn = async e => {
@@ -44,16 +34,6 @@ const Login = () => {
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h2 className='text-center'>Login Now!</h2>
             <SocialLogin/>
-          {/* <div
-            onClick={handleGoogleSignIn}
-            className='flex cursor-pointer items-center justify-center transform border rounded-lg   hover:bg-gray-50 '
-          >
-
-            <span className='w-5/6 px-4 py-3 font-bold text-center'>
-            Login with Google
-            </span>
-          </div> */}
-
             <form className="card-body" onSubmit={handleSignIn}>
               <div className="form-control">
                 <label className="label">

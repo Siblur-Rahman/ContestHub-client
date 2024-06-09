@@ -4,16 +4,20 @@ import { useQuery } from '@tanstack/react-query'
 import { FaTrash, FaUsers } from 'react-icons/fa';
 import Swal from "sweetalert2";
 const ManageUser = () => {
-    const AxiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
     const {data: users = [], refetch} = useQuery({
         queryKey:['users'],
         queryFn: async() =>{
-            const res = await AxiosSecure.get('/users');
+            const res = await axiosSecure.get('/users', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
+            });
             return res.data;
         }
     })
     const handleMakeAdmin = user =>{
-        AxiosSecure.patch(`/users/admin/${user._id}`)
+        axiosSecure.patch(`/users/admin/${user._id}`)
         .then(res =>{
             console.log(res.data)
             if(res.data.modifiedCount >0){
@@ -21,7 +25,7 @@ const ManageUser = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Your work has been saved",
+                    title: `${user.name} is Admin Now!`,
                     showConfirmButton: false,
                     timer: 1500
                   });
@@ -40,7 +44,7 @@ const ManageUser = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                AxiosSecure.delete(`/users/${user._id}`)
+                axiosSecure.delete(`/users/${user._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
