@@ -1,5 +1,4 @@
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import '../../../../../Assignment-12/client/src/index.css';
 import { useQuery } from '@tanstack/react-query'
 import { FaTrash, FaUsers } from 'react-icons/fa';
 import Swal from "sweetalert2";
@@ -16,6 +15,22 @@ const ManageUser = () => {
             return res.data;
         }
     })
+    const handleMakeUser = admin =>{
+        axiosSecure.patch(`/users/creator/${admin._id}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount >0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${admin.name} is creator Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+    }
     const handleMakeAdmin = user =>{
         axiosSecure.patch(`/users/admin/${user._id}`)
         .then(res =>{
@@ -83,11 +98,16 @@ const ManageUser = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>
-                                {user.role === 'admin' ? 'Admin' : <button
+                                {user.role === 'admin' ? <button
+                                onClick={() => handleMakeUser(user)}
+                                className='btn btn-lg bg-orange-500'
+                            >
+                            Admin
+                            </button> : <button
                                 onClick={() => handleMakeAdmin(user)}
                                 className='btn btn-lg bg-orange-500'
                             >
-                            <FaUsers></FaUsers>
+                            Creator
                             </button>}
                             </td>
                             <td>

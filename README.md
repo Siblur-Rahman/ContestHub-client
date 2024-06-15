@@ -8,3 +8,5 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 - [react-toastify](https://www.npmjs.com/package/react-toastify)
 - [react-Icons](https://react-icons.github.io/react-icons)
+- [react-hook-form](https://react-hook-form.com)
+- [Stipe](https://github.com/stripe/react-stripe-js)

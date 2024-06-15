@@ -24,6 +24,7 @@ const Dashboard = () => {
                     isCreator && <>
                      <li><NavLink to="/dashboard/addcontest">Add Contest</NavLink></li>
                     <li><NavLink to="/dashboard/mycreatedcontest">My Created Contest</NavLink></li>
+                    <li><NavLink to="/dashboard/submitted">Contest Submitted</NavLink></li>
                     </>
                     }
                    {

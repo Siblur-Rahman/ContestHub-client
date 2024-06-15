@@ -16,6 +16,7 @@ import ManageUser from "../pages/Dashboard/AdminDashboard/ManageUser";
 import ManageContests from "../pages/Dashboard/AdminDashboard/ManageContests";
 import MyCreatedContest from "../pages/Dashboard/CreatorDashboard/MyCreatedContest";
 import UpdateContest from "../pages/Dashboard/CreatorDashboard/UpdateContest";
+import ContestSubmitted from "../pages/Dashboard/CreatorDashboard/ContestSubmitted";
 
 const router = createBrowserRouter([
     {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
           loader: ({ params }) =>
             fetch(`${import.meta.env.VITE_API_URL}/contest/${params.id}`),
         },
+        {
+          path:'submitted',
+          element:<ContestSubmitted/>
+        }
       ]
     }
   ]);
