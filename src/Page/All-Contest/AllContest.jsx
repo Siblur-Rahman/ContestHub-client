@@ -122,7 +122,7 @@ const AllContest = () => {
               <div className="card-body p-4">
                 <p>
                   Category: {contest?.contestType} <br />
-                  Attempted count: {contest?.Quantity} <br />
+                  Attempted count: {contest?.orderCount} <br />
                   Description: {contest?.contestDescription.slice(
                     0,
                     20

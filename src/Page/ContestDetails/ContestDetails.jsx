@@ -32,10 +32,10 @@ const ContestDetails = () => {
         </figure>
         <div className="card-body w-full lg:w-2/3">
           <h2 className="card-title text-4xl py-4">{contest?.contestName}</h2>{" "}
-          <p>● Attempted count/ participation count: {contest?.Quantity}</p>
-          <p>● Category: {contest?.Category}</p>
+          <p>● Attempted count/ participation count: {contest?.orderCount}</p>
+          <p>● Category: <span className="bg-yellow-200 text-xl">{contest?.contestType}</span></p>
           <p>● Prize Money: {contest?.prizeMoney}</p>
-          <p>● Contest Winner Name and image: {contest?.chiefNames}</p>
+          <p>● Contest Winner Name and image: <span className="bg-yellow-200">{contest?.chiefNames}</span></p>
           <p>● Deadline   : {contest?.contestDeadline}</p>
           <p>● Description of Contest : {contest?.contestDescription}</p>
           <div className="card-actions justify-end">
