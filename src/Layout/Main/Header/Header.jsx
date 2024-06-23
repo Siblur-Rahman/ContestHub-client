@@ -80,7 +80,7 @@ const Header = () => {
                         {navLink}
                     </ul>
                     </div>
-                    <NavLink to="/" className="btn btn-ghost text-xl" data-tooltip-id="my-tooltip" data-tooltip-content="Click Me to go Home">TOURIST</NavLink>
+                    <NavLink to="/" className="btn btn-ghost text-xl" data-tooltip-id="my-tooltip" data-tooltip-content="Click Me to go Home">ContestHUB</NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
