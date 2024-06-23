@@ -119,9 +119,9 @@ const CheckoutForm = () => {
           style: {
             base: {
               fontSize: "16px",
-              color: "#FFFFFF",
+              color: "red",
               "::placeholder": {
-                color: "#FFFFFF",
+                color: "red",
               },
             },
             invalid: {
