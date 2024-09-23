@@ -108,7 +108,7 @@ const router = createBrowserRouter([
             `${import.meta.env.VITE_API_URL}/contest/${params.id}`
           );
           if (!response.ok) {
-            throw new Error("Failed to fetch food data for updating");
+            throw new Error("Failed to fetch data for updating");
           }
           const data = await response.json();
           return data;
